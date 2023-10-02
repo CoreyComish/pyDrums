@@ -17,14 +17,14 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_h]:
-        pygame.mixer.Sound.play(hi_hat)
-    if keys[pygame.K_s]:
-        pygame.mixer.Sound.play(snare)
-    if keys[pygame.K_SPACE]:
-        pygame.mixer.Sound.play(kick)
+        
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_h:
+                pygame.mixer.Sound.play(hi_hat)
+            if event.key == pygame.K_s:
+                pygame.mixer.Sound.play(snare)
+            if event.key == pygame.K_SPACE:
+                pygame.mixer.Sound.play(kick)
 
     screen.blit(bg, (0,0)) # display drum set bg
     pygame.display.flip()
