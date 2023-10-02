@@ -1,6 +1,6 @@
 # Music Player UI and Class
 
-# todo: play/pause button, restart button, rewind/ff button, cleaner ui
+# todo: build clean UI
 
 import pygame
 import tkinter
@@ -17,8 +17,7 @@ class MusicPlayer:
         self.restart_button_rect = None
 
         self.music_file_path = None
-    
-    # todo: file checking/validation and proper handling
+
     def getAudioFilePath(self):
         file_path = filedialog.askopenfile()
         if file_path.name[-4:] == ".mp3":

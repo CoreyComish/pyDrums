@@ -8,4 +8,4 @@ Temporary to-do / brainstorming list:
 
 * add a mp3 player to drum along to
 
-* Volume slider
+* Volume sliders
