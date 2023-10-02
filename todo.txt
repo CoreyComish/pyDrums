@@ -6,6 +6,6 @@ Temporary to-do / brainstorming list:
 
 * Metronome with custom bpm
 
-* add a mp3 player to drum along
+* add a mp3 player to drum along to
 
 * Volume slider
