@@ -9,3 +9,5 @@ Temporary to-do / brainstorming list:
 * Indicate hotkeys on the drum set
 
 * add a mp3 player to drum along
+
+* Volume slider

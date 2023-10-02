@@ -1,31 +1,25 @@
 import pygame
 import os
+import drums
 
+# Initialize, set display area, load bg
 pygame.init()
 screen = pygame.display.set_mode((1024, 884))
 clock = pygame.time.Clock()
 running = True
 bg = pygame.image.load(os.path.join("img", "drums.png"))
-print(bg)
 
-# Load Audio (todo: move into audio loader class?)
-hi_hat = pygame.mixer.Sound("./audio/Standard/hi-hat.wav")
-kick = pygame.mixer.Sound("./audio/Standard/kick.wav")
-snare = pygame.mixer.Sound("./audio/Standard/snare.wav")
+# Create drum object
+drums = drums.Drums()
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         
-        # Handle key down events, playing the drum (todo: move to drumplay class?)
+        # Handle key down events, playing the correct drum
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_h:
-                pygame.mixer.Sound.play(hi_hat)
-            if event.key == pygame.K_s:
-                pygame.mixer.Sound.play(snare)
-            if event.key == pygame.K_SPACE:
-                pygame.mixer.Sound.play(kick)
+            drums.playDrum(event.key)
 
     screen.blit(bg, (0,0)) # display drum set bg
     pygame.display.flip()
