@@ -14,8 +14,6 @@ class MusicPlayer:
         self.color = color
 
         self.play_pause_button_rect = None
-        self.rw_button_rect = None
-        self.ff_button_rect = None
         self.restart_button_rect = None
 
         self.music_file_path = None
@@ -30,12 +28,6 @@ class MusicPlayer:
     
     def getPlayPauseButtonRect(self):
         return self.play_pause_button_rect
-    
-    def getRWButtonRect(self):
-        return self.rw_button_rect
-    
-    def getFFButtonRect(self):
-        return self.ff_button_rect
     
     def getRestartButtonRect(self):
         return self.restart_button_rect
