@@ -15,8 +15,7 @@ drums = drums.Drums()
 
 # Create Music Player position and object
 musicplayer_rect = pygame.Rect(800, 20, 100, 20)
-musicplayer = music_player.MusicPlayer(musicplayer_rect, 1)
-
+musicplayer = music_player.MusicPlayer(screen, musicplayer_rect, 1)
 
 while running:
     for event in pygame.event.get():
@@ -30,10 +29,12 @@ while running:
         # Check if we are clicking down on a menu item
         # If we are, handle the proper event
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if musicplayer.getButtonRect().collidepoint(event.pos):
-                music_file_path = musicplayer.getAudioFilePath()
-                pygame.mixer.music.load(music_file_path)
-                pygame.mixer.music.play()
+            if musicplayer.getMusicPlayerRect().collidepoint(event.pos):
+                musicplayer.loadMusic()
+            if musicplayer.getPlayPauseButtonRect().collidepoint(event.pos):
+                musicplayer.playPause()
+            if musicplayer.getRestartButtonRect().collidepoint(event.pos):
+                musicplayer.restart()
 
     screen.blit(bg, (0,0)) # display drum set bg
     musicplayer.drawMusicPlayerUI(screen) # display music player on screen
