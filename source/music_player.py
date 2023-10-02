@@ -21,7 +21,10 @@ class MusicPlayer:
     # todo: file checking/validation and proper handling
     def getAudioFilePath(self):
         file_path = filedialog.askopenfile()
-        return file_path
+        if file_path.name[-4:] == ".mp3":
+            return file_path
+        else:
+            return None
     
     def getMusicPlayerRect(self):
         return self.music_player_rect
@@ -32,10 +35,13 @@ class MusicPlayer:
     def getRestartButtonRect(self):
         return self.restart_button_rect
     
-    def loadMusic(self, path=None, time=None):
+    def loadMusic(self):
         self.music_file_path = self.getAudioFilePath()
-        pygame.mixer.music.load(self.music_file_path)
-        pygame.mixer.music.play()
+        if self.music_file_path != None:
+            pygame.mixer.music.load(self.music_file_path)
+            pygame.mixer.music.play()
+        else:
+            exit
 
     def playPause(self):
         if pygame.mixer.music.get_busy():
@@ -44,7 +50,10 @@ class MusicPlayer:
             pygame.mixer.music.unpause()
 
     def restart(self):
-        pygame.mixer.music.rewind()
+        if self.music_file_path != None:
+            pygame.mixer.music.rewind()
+        else:
+            exit
     
     def drawMusicPlayer(self):
         self.music_player_rect = pygame.draw.rect(self.display, self.color, self.music_player_rect)
