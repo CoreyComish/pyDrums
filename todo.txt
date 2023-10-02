@@ -1,7 +1,5 @@
 Temporary to-do / brainstorming list:
 
-* Highlight drum when it is being played
-
 * Add menu in bottom right that lets you select different drum sets
 
 * Volume sliders
