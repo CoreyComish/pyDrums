@@ -36,7 +36,7 @@ class Drums:
     def playDrum(self, keypress):
         try:
             idx = self.drumsToKeys.index(keypress)
-            pygame.mixer.Sound.play(self.sounds[idx])
+            pygame.mixer.Channel(idx).play(pygame.mixer.Sound(self.sounds[idx]))
         except:
             pass
 
