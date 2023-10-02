@@ -43,7 +43,7 @@ class MusicPlayer:
         else:
             pygame.mixer.music.unpause()
 
-    def restart(self, seconds):
+    def restart(self):
         pygame.mixer.music.rewind()
     
     def drawMusicPlayer(self):
