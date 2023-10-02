@@ -17,9 +17,12 @@ defaultKeys = [pygame.K_h, pygame.K_SPACE, pygame.K_s,
                pygame.K_q, pygame.K_w, pygame.K_e,
                pygame.K_y, pygame.K_u]
 
+drumLoc = [(100, 250), (475,500), (350,400), (410,275),
+           (525,275), (650,400), (725,225), (325,125)]
+
 class Drums:
 
-    def __init__(self):
+    def __init__(self, display):
         self.sounds = defaultDrums
         self.drumsToKeys = defaultKeys
         self.hi_hat = self.sounds[0]
@@ -30,6 +33,7 @@ class Drums:
         self.fl_tom = self.sounds[5]
         self.ride = self.sounds[6]
         self.crash = self.sounds[7]
+        self.display = display
 
     # Plays the drum sound, given the key press
     # This has a dependency on the fact the drum sounds are loaded in the correct order (see init)
@@ -37,6 +41,15 @@ class Drums:
         try:
             idx = self.drumsToKeys.index(keypress)
             pygame.mixer.Channel(idx).play(pygame.mixer.Sound(self.sounds[idx]))
+            return idx
+        except:
+            pass
+
+    # Returns drum location given idx
+    def drumHitPos(self, idx):
+        try:
+            pos_x, pos_y = drumLoc[idx]
+            return pos_x, pos_y
         except:
             pass
 
