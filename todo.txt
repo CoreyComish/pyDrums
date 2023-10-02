@@ -1,0 +1,11 @@
+Temporary to-do / brainstorming list:
+
+* Highlight drum when it is being played
+
+* Add menu in bottom right that lets you select different drum sets
+
+* Metronome with custom bpm
+
+* Indicate hotkeys on the drum set
+
+* add a mp3 player to drum along

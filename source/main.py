@@ -8,7 +8,7 @@ running = True
 bg = pygame.image.load(os.path.join("img", "drums.png"))
 print(bg)
 
-# Audio
+# Load Audio (todo: move into audio loader class?)
 hi_hat = pygame.mixer.Sound("./audio/Standard/hi-hat.wav")
 kick = pygame.mixer.Sound("./audio/Standard/kick.wav")
 snare = pygame.mixer.Sound("./audio/Standard/snare.wav")
@@ -18,6 +18,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         
+        # Handle key down events, playing the drum (todo: move to drumplay class?)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_h:
                 pygame.mixer.Sound.play(hi_hat)
@@ -29,7 +30,5 @@ while running:
     screen.blit(bg, (0,0)) # display drum set bg
     pygame.display.flip()
     clock.tick(60) # 60 fps
-    
-    
 
 pygame.quit()
