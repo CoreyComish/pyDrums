@@ -7,7 +7,7 @@ pygame.init()
 screen = pygame.display.set_mode((1024, 884))
 clock = pygame.time.Clock()
 running = True
-bg = pygame.image.load(os.path.join("img", "drums.png"))
+bg = pygame.image.load(os.path.join("img", "drums.jpg"))
 
 # Create drum object
 drums = drums.Drums()

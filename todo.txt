@@ -6,8 +6,6 @@ Temporary to-do / brainstorming list:
 
 * Metronome with custom bpm
 
-* Indicate hotkeys on the drum set
-
 * add a mp3 player to drum along
 
 * Volume slider
