@@ -19,7 +19,7 @@ musicplayer_rect = pygame.Rect(650, 20, 200, 20)
 musicplayer = MusicPlayer.MusicPlayer(screen, musicplayer_rect, 1)
 
 # Create Drum Selector position and object
-drum_selector_rect = pygame.Rect(650, 850, 225, 20)
+drum_selector_rect = pygame.Rect(750, 850, 225, 20)
 drum_selector = DrumSelector.DrumSelector(screen, drum_selector_rect, 1)
 
 # Position of last drum hit
