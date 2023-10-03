@@ -18,7 +18,7 @@ musicplayer_rect = pygame.Rect(650, 20, 200, 20)
 musicplayer = MusicPlayer.MusicPlayer(screen, musicplayer_rect, 1)
 
 # Position of last drum hit
-drum_hit_pos = None
+drum_hit_pos = []
 
 while running:
     for event in pygame.event.get():
@@ -28,7 +28,9 @@ while running:
         # Handle key down events, playing the correct drum
         if event.type == pygame.KEYDOWN:
             drum_hit = drums.playDrum(event.key)
-            drum_hit_pos = drums.drumHitPos(drum_hit)
+            if drum_hit != None:
+                drum_hit_pos.append(drums.drumHitPos(drum_hit))
+        
 
         # Check if we are clicking down on a menu item
         # If we are, handle the proper event
@@ -44,8 +46,10 @@ while running:
     musicplayer.drawMusicPlayerUI(screen) # display music player on screen
     
     # draw light indicator of last drum hit
-    if drum_hit_pos != None:
-        pygame.draw.circle(screen, (0,255,0), drum_hit_pos, 30)
+    if len(drum_hit_pos) != 0:
+        for hit in drum_hit_pos:
+            pygame.draw.circle(screen, (0,255,0), drum_hit_pos[0], 30)
+            drum_hit_pos.pop(0)
     
     pygame.display.flip()
     clock.tick(60) # 60 fps
