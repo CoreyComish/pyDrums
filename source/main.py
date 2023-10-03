@@ -1,7 +1,7 @@
 import pygame
 import os
 import drums
-import music_player
+import MusicPlayer
 
 # Initialize, set display area, load bg
 pygame.init()
@@ -15,7 +15,7 @@ drums = drums.Drums(screen)
 
 # Create Music Player position and object
 musicplayer_rect = pygame.Rect(650, 20, 200, 20)
-musicplayer = music_player.MusicPlayer(screen, musicplayer_rect, 1)
+musicplayer = MusicPlayer.MusicPlayer(screen, musicplayer_rect, 1)
 
 # Position of last drum hit
 drum_hit_pos = None
