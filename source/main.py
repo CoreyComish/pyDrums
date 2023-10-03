@@ -1,6 +1,6 @@
 import pygame
 import os
-import drums
+import Drums
 import MusicPlayer
 
 # Initialize, set display area, load bg
@@ -11,7 +11,7 @@ running = True
 bg = pygame.image.load(os.path.join("img", "drums.jpg"))
 
 # Create drum object
-drums = drums.Drums(screen)
+drums = Drums.Drums(screen)
 
 # Create Music Player position and object
 musicplayer_rect = pygame.Rect(650, 20, 200, 20)
