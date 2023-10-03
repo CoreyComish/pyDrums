@@ -2,6 +2,7 @@ import pygame
 import os
 import Drums
 import MusicPlayer
+import DrumSelector
 
 # Initialize, set display area, load bg
 pygame.init()
@@ -16,6 +17,10 @@ drums = Drums.Drums(screen)
 # Create Music Player position and object
 musicplayer_rect = pygame.Rect(650, 20, 200, 20)
 musicplayer = MusicPlayer.MusicPlayer(screen, musicplayer_rect, 1)
+
+# Create Drum Selector position and object
+drum_selector_rect = pygame.Rect(650, 850, 225, 20)
+drum_selector = DrumSelector.DrumSelector(screen, drum_selector_rect, 1)
 
 # Position of last drum hit
 drum_hit_pos = []
@@ -41,9 +46,14 @@ while running:
                 musicplayer.playPause()
             if musicplayer.getRestartButtonRect().collidepoint(event.pos):
                 musicplayer.restart()
+            if drum_selector.getDrumSelectorRect().collidepoint(event.pos):
+                new_drum_list = drum_selector.getDrums()
+                if new_drum_list != None:
+                    drums.loadDrums(new_drum_list)
 
     screen.blit(bg, (0,0)) # display drum set bg
     musicplayer.drawMusicPlayerUI(screen) # display music player on screen
+    drum_selector.drawDrumSelectorUI(screen) # display drum selector on screen
     
     # draw light indicator of last drum hit
     if len(drum_hit_pos) != 0:

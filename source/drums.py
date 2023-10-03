@@ -53,10 +53,21 @@ class Drums:
         except:
             pass
 
+    # Used to organize the drum list in the correct order, before loading
+    def organizeDrums(self, drumList):
+        organized_drum_list = [None] * 8
+        drum_names_and_idx = [('hi_hat', 0), ('kick', 1), ('snare', 2), ('hi_tom', 3),
+                              ('md_tom', 4), ('fl_tom', 5), ('ride', 6), ('crash', 7)]
+        for drums in drumList:
+            for names in drum_names_and_idx:
+                if names[0] in drums:
+                    organized_drum_list[names[1]] = drums
+        return organized_drum_list
+
     # Used to load different sounds into the drum kit
-    def loadDrum(self, drumList):
+    def loadDrums(self, drumList):
         if len(drumList) == len(self.sounds):
-            self.sounds = drumList
+            self.sounds = self.organizeDrums(drumList)
         else:
             quit
             

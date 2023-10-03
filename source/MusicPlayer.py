@@ -85,8 +85,7 @@ class MusicPlayer:
         self.restart_button_rect = pygame.draw.rect(self.display, self.color, rect)
         display.blit(self.font.render("Restart", True, (255,0,0)), 
                 (self.restart_button_rect.left + 5, self.restart_button_rect.top + 5))
-    
-    # temp ui
+
     def drawMusicPlayerUI(self, display):
         self.drawMusicPlayer(display)
         self.drawPlayPauseButton(display)
