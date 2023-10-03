@@ -1,5 +1,3 @@
 Temporary to-do / brainstorming list:
 
-* Add menu in bottom right that lets you select different drum sets
-
 * Volume sliders
