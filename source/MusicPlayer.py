@@ -22,7 +22,7 @@ class MusicPlayer:
 
     def getAudioFilePath(self):
         file_path = filedialog.askopenfile()
-        if file_path.name[-4:] == ".mp3":
+        if file_path != None and file_path.name[-4:] == ".mp3":
             return file_path
         else:
             return None
