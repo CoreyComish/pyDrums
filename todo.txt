@@ -1,5 +1,3 @@
 Temporary to-do / brainstorming list:
 
 * Update UI using pygame_widgets
-
-* When song is over, restart does not work and UI shows song as paused. Fix this

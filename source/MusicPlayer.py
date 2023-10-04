@@ -48,7 +48,7 @@ class MusicPlayer:
         self.music_file_path = self.getAudioFilePath()
         if self.music_file_path != None:
             pygame.mixer.music.load(self.music_file_path)
-            pygame.mixer.music.play()
+            pygame.mixer.music.play(loops=-1)
         else:
             exit
 
