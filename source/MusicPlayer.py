@@ -3,6 +3,9 @@
 # todo: build clean UI
 
 import pygame
+import pygame_widgets
+from pygame_widgets.slider import Slider
+from pygame_widgets.textbox import TextBox
 import tkinter
 from tkinter import filedialog
 
@@ -19,6 +22,8 @@ class MusicPlayer:
         self.music_file_path = None
 
         self.font = pygame.font.SysFont('Arial', 15)
+
+        self.slider = None
 
     def getAudioFilePath(self):
         file_path = filedialog.askopenfile()
@@ -85,11 +90,24 @@ class MusicPlayer:
         self.restart_button_rect = pygame.draw.rect(self.display, self.color, rect)
         display.blit(self.font.render("Restart", True, (255,0,0)), 
                 (self.restart_button_rect.left + 5, self.restart_button_rect.top + 5))
+        
+    def drawVolumeSlider(self, display):
+        sliderLabel = TextBox(display, 100, 810, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
+        sliderLabel.setText("Music Volume")
+        sliderLabel.disable()
+        slider = Slider(display, 50, 825, 200, 10, min=0.0, max=1.0, step=0.05)
+        self.slider = slider
+
+    def getVolumeSliderVal(self):
+        return self.slider.getValue()
 
     def drawMusicPlayerUI(self, display):
         self.drawMusicPlayer(display)
         self.drawPlayPauseButton(display)
         self.drawRestartButton(display)
-        
+    
+    def updateVolume(self):
+        if (pygame.mixer.music.get_volume() != self.getVolumeSliderVal()):
+            pygame.mixer.music.set_volume(self.getVolumeSliderVal())
 
     

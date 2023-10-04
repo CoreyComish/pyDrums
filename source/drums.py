@@ -1,8 +1,13 @@
 # Drum Class
 
 import pygame
+import pygame_widgets
+from pygame_widgets.slider import Slider
+from pygame_widgets.textbox import TextBox
 
+CHANNEL_COUNT = 8
 pygame.mixer.init()
+pygame.mixer.set_num_channels(CHANNEL_COUNT)
 
 defaultDrums = [pygame.mixer.Sound("./audio/Standard/hi_hat.wav"), 
                 pygame.mixer.Sound("./audio/Standard/kick.wav"), 
@@ -34,6 +39,7 @@ class Drums:
         self.ride = self.sounds[6]
         self.crash = self.sounds[7]
         self.display = display
+        self.slider = None
 
     # Plays the drum sound, given the key press
     # This has a dependency on the fact the drum sounds are loaded in the correct order (see init)
@@ -70,5 +76,22 @@ class Drums:
             self.sounds = self.organizeDrums(drumList)
         else:
             quit
+    
+    def drawVolumeSlider(self, display):
+        sliderLabel = TextBox(display, 100, 845, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
+        sliderLabel.setText("Drum Volume")
+        sliderLabel.disable()
+        slider = Slider(display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
+        self.slider = slider
+
+    def getVolumeSliderVal(self):
+        return self.slider.getValue()
+    
+    def updateVolume(self):
+        # Change volume of drums if user moved slider
+        if pygame.mixer.Channel(0).get_volume() != self.getVolumeSliderVal():
+            for i in range(0, CHANNEL_COUNT):
+                pygame.mixer.Channel(i).set_volume(self.getVolumeSliderVal())
+    
             
         

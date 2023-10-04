@@ -1,4 +1,5 @@
 import pygame
+import pygame_widgets
 import os
 import Drums
 import MusicPlayer
@@ -13,10 +14,14 @@ bg = pygame.image.load(os.path.join("img", "drums.jpg"))
 
 # Create drum object
 drums = Drums.Drums(screen)
+# Draw drums volume slider UI. Using a library for this, so pygame_widgets.update gets called in the loop
+drums.drawVolumeSlider(screen)
 
 # Create Music Player position and object
 musicplayer_rect = pygame.Rect(650, 20, 200, 20)
 musicplayer = MusicPlayer.MusicPlayer(screen, musicplayer_rect, 1)
+# Draw music volume slider UI. Using a library for this, so pygame_widgets.update gets called in the loop
+musicplayer.drawVolumeSlider(screen)
 
 # Create Drum Selector position and object
 drum_selector_rect = pygame.Rect(750, 850, 225, 20)
@@ -24,6 +29,8 @@ drum_selector = DrumSelector.DrumSelector(screen, drum_selector_rect, 1)
 
 # Position of last drum hit
 drum_hit_pos = []
+
+
 
 while running:
     for event in pygame.event.get():
@@ -60,7 +67,12 @@ while running:
         for hit in drum_hit_pos:
             pygame.draw.circle(screen, (0,255,0), drum_hit_pos[0], 30)
             drum_hit_pos.pop(0)
-    
+
+    # Check if moved sliders for volume changes
+    musicplayer.updateVolume()
+    drums.updateVolume()
+
+    pygame_widgets.update(event)
     pygame.display.flip()
     clock.tick(60) # 60 fps
 
