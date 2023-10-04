@@ -92,11 +92,13 @@ class MusicPlayer:
                 (self.restart_button_rect.left + 5, self.restart_button_rect.top + 5))
         
     def drawVolumeSlider(self, display):
-        sliderLabel = TextBox(display, 100, 810, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
+        sliderLabel = TextBox(display, 100, 810, 20, 20, colour=(255,255,255), 
+                              borderColour=(255,255,255))
         sliderLabel.setText("Music Volume")
         sliderLabel.disable()
         slider = Slider(display, 50, 825, 200, 10, min=0.0, max=1.0, step=0.05)
         self.slider = slider
+        
 
     def getVolumeSliderVal(self):
         return self.slider.getValue()
