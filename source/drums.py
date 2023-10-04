@@ -41,6 +41,9 @@ class Drums:
         self.display = display
         self.slider = None
 
+    def getVolumeSliderVal(self):
+        return self.slider.getValue()
+
     # Plays the drum sound, given the key press
     # This has a dependency on the fact the drum sounds are loaded in the correct order (see init)
     def playDrum(self, keypress):
@@ -83,9 +86,6 @@ class Drums:
         sliderLabel.disable()
         slider = Slider(display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
         self.slider = slider
-
-    def getVolumeSliderVal(self):
-        return self.slider.getValue()
     
     def updateVolume(self):
         # Change volume of drums if user moved slider

@@ -41,6 +41,9 @@ class MusicPlayer:
     def getRestartButtonRect(self):
         return self.restart_button_rect
     
+    def getVolumeSliderVal(self):
+        return self.slider.getValue()
+    
     def loadMusic(self):
         self.music_file_path = self.getAudioFilePath()
         if self.music_file_path != None:
@@ -98,10 +101,6 @@ class MusicPlayer:
         sliderLabel.disable()
         slider = Slider(display, 50, 825, 200, 10, min=0.0, max=1.0, step=0.05)
         self.slider = slider
-        
-
-    def getVolumeSliderVal(self):
-        return self.slider.getValue()
 
     def drawMusicPlayerUI(self, display):
         self.drawMusicPlayer(display)

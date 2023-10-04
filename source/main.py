@@ -30,8 +30,6 @@ drum_selector = DrumSelector.DrumSelector(screen, drum_selector_rect, 1)
 # Position of last drum hit
 drum_hit_pos = []
 
-
-
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
