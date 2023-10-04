@@ -109,5 +109,3 @@ class MusicPlayer:
     def updateVolume(self):
         if (pygame.mixer.music.get_volume() != self.getVolumeSliderVal()):
             pygame.mixer.music.set_volume(self.getVolumeSliderVal())
-
-    

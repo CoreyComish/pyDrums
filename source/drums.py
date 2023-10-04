@@ -92,6 +92,3 @@ class Drums:
         if pygame.mixer.Channel(0).get_volume() != self.getVolumeSliderVal():
             for i in range(0, CHANNEL_COUNT):
                 pygame.mixer.Channel(i).set_volume(self.getVolumeSliderVal())
-    
-            
-        
