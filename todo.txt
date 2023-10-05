@@ -1,4 +1,0 @@
-Temporary to-do / brainstorming list:
-
-* Update UI using pygame_widgets (In progress)
-    - String indicating which drum set is selected

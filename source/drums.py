@@ -86,6 +86,9 @@ class Drums:
         sliderLabel.disable()
         slider = Slider(self.display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
         self.slider = slider
+
+    def drawDrumUI(self):
+        self.drawVolumeSlider()
     
     def updateVolume(self):
         # Change volume of drums if user moved slider

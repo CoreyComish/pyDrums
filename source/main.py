@@ -14,7 +14,7 @@ bg = pygame.image.load(os.path.join("img", "drums.jpg"))
 
 # Create drum UI and object
 drums = Drums.Drums(screen)
-drums.drawVolumeSlider()
+drums.drawDrumUI()
 
 # Create Music Player UI and object
 musicplayer = MusicPlayer.MusicPlayer(screen)
