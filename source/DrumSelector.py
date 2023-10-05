@@ -19,7 +19,7 @@ class DrumSelector:
         self.drum_kit_name_text = None
 
     def getDrumFolderPath(self):
-        self.folder_path = filedialog.askdirectory()
+        self.folder_path = filedialog.askdirectory(initialdir=os.path.join("audio"))
         return self.folder_path
     
     def getDrums(self):
