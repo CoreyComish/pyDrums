@@ -1,5 +1,4 @@
 Temporary to-do / brainstorming list:
 
 * Update UI using pygame_widgets (In progress)
-    - String indicating that what song is currently playing
     - String indicating which drum set is selected
