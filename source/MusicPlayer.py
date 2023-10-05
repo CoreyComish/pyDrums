@@ -16,6 +16,9 @@ class MusicPlayer:
         self.display = display
         self.music_file_path = None
         self.slider = None
+        self.load_song_button = None
+        self.playpause_button = None
+        self.restart_button = None
 
     def getAudioFilePath(self):
         file_path = filedialog.askopenfile()
@@ -38,27 +41,36 @@ class MusicPlayer:
     def playPause(self):
         if pygame.mixer.music.get_busy():
             pygame.mixer.music.pause()
+            self.drawPlayPauseButton(False)
         else:
             pygame.mixer.music.unpause()
+            self.drawPlayPauseButton(True)
 
     def restart(self):
         if self.music_file_path != None:
             pygame.mixer.music.rewind()
         else:
             exit
+
+    def drawPlayPauseButton(self, playing):
+        if playing:
+            buttonText="Pause"
+        else:
+            buttonText="Play"
+        self.playpause_button = Button(self.display, self.load_song_button._x + 115, self.load_song_button._y,
+                                  self.load_song_button._width, self.load_song_button._height,
+                                  hoverColor=self.load_song_button.hoverColour, radius=self.load_song_button.radius, 
+                                  text=buttonText, onClick=lambda: self.playPause())
         
     def drawMusicPlayerUI(self):
-        load_song_button = Button(self.display, 650, 20, 100, 20, hoverColor=(150,0,0), radius=6, 
+        self.load_song_button = Button(self.display, 650, 20, 100, 20, hoverColor=(150,0,0), radius=6, 
                                   text="Load .mp3", onClick=lambda: self.loadMusic())
-        playpause_button = Button(self.display, load_song_button._x + 115, load_song_button._y,
-                                  load_song_button._width, load_song_button._height,
-                                  hoverColor=load_song_button.hoverColour, radius=load_song_button.radius, 
-                                  text="Play/Pause", onClick=lambda: self.playPause())
-        restart_button = Button(self.display, load_song_button._x + 230, load_song_button._y,
-                                  load_song_button._width, load_song_button._height,
-                                  hoverColor=load_song_button.hoverColour, radius=load_song_button.radius, 
+        self.restart_button = Button(self.display, self.load_song_button._x + 230, self.load_song_button._y,
+                                  self.load_song_button._width, self.load_song_button._height,
+                                  hoverColor=self.load_song_button.hoverColour, radius=self.load_song_button.radius, 
                                   text="Restart", onClick=lambda: self.restart())
         self.drawVolumeSlider()
+        self.drawPlayPauseButton(True)
 
     def drawVolumeSlider(self):
         sliderLabel = TextBox(self.display, 100, 810, 20, 20, colour=(255,255,255), 
