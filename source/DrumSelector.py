@@ -8,6 +8,7 @@ from pygame_widgets.textbox import TextBox
 import tkinter
 from tkinter import filedialog
 import os
+import utils
 
 class DrumSelector:
 
@@ -19,7 +20,7 @@ class DrumSelector:
         self.drum_kit_name_text = None
 
     def getDrumFolderPath(self):
-        self.folder_path = filedialog.askdirectory(initialdir=os.path.join("audio"))
+        self.folder_path = filedialog.askdirectory(initialdir=utils.getProjectRoot() + "/audio")
         return self.folder_path
     
     def getDrums(self):

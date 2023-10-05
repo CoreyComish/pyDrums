@@ -4,19 +4,22 @@ import pygame
 import pygame_widgets
 from pygame_widgets.slider import Slider
 from pygame_widgets.textbox import TextBox
+import utils
 
 CHANNEL_COUNT = 8
 pygame.mixer.init()
 pygame.mixer.set_num_channels(CHANNEL_COUNT)
 
-defaultDrums = [pygame.mixer.Sound("./audio/Standard/hi_hat.wav"), 
-                pygame.mixer.Sound("./audio/Standard/kick.wav"), 
-                pygame.mixer.Sound("./audio/Standard/snare.wav"), 
-                pygame.mixer.Sound("./audio/Standard/hi_tom.wav"),
-                pygame.mixer.Sound("./audio/Standard/md_tom.wav"), 
-                pygame.mixer.Sound("./audio/Standard/fl_tom.wav"),
-                pygame.mixer.Sound("./audio/Standard/ride.wav"), 
-                pygame.mixer.Sound("./audio/Standard/crash.wav")]
+audioDirectory = utils.getProjectRoot() + "/audio/Standard/"
+
+defaultDrums = [pygame.mixer.Sound(audioDirectory + "hi_hat.wav"), 
+                pygame.mixer.Sound(audioDirectory + "kick.wav"), 
+                pygame.mixer.Sound(audioDirectory + "snare.wav"), 
+                pygame.mixer.Sound(audioDirectory + "hi_tom.wav"),
+                pygame.mixer.Sound(audioDirectory + "md_tom.wav"), 
+                pygame.mixer.Sound(audioDirectory + "fl_tom.wav"),
+                pygame.mixer.Sound(audioDirectory + "ride.wav"), 
+                pygame.mixer.Sound(audioDirectory + "crash.wav")]
 
 defaultKeys = [pygame.K_h, pygame.K_SPACE, pygame.K_s, 
                pygame.K_q, pygame.K_w, pygame.K_e,

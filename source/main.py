@@ -4,13 +4,15 @@ import os
 import Drums
 import MusicPlayer
 import DrumSelector
+import utils
 
 # Initialize, set display area, load bg
 pygame.init()
 screen = pygame.display.set_mode((1024, 884))
 clock = pygame.time.Clock()
 running = True
-bg = pygame.image.load(os.path.join("img", "drums.jpg"))
+root = utils.getProjectRoot()
+bg = pygame.image.load(root + "/img/drums.jpg")
 
 # Create drum UI and object
 drums = Drums.Drums(screen)
