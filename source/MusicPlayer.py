@@ -18,10 +18,14 @@ class MusicPlayer:
         self.playpause_button = None
         self.restart_button = None
 
-    def getAudioFilePath(self):
-        file_path = filedialog.askopenfile()
-        if file_path != None and file_path.name[-4:] == ".mp3":
-            return file_path
+    def getAudioFilePath(self, file_path):
+        if file_path == None:
+            file_path = filedialog.askopenfile()
+            if file_path != None and file_path.name[-4:] == ".mp3":
+                return file_path
+        if type(file_path) == str:
+            if file_path[-4:] == ".mp3":
+                return file_path
         else:
             return None
     
@@ -29,7 +33,7 @@ class MusicPlayer:
         return self.slider.getValue()
     
     def loadMusic(self):
-        self.music_file_path = self.getAudioFilePath()
+        self.music_file_path = self.getAudioFilePath(None)
         if self.music_file_path != None:
             pygame.mixer.music.load(self.music_file_path)
             pygame.mixer.music.play(loops=-1)
