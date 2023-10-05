@@ -1,7 +1,5 @@
 # Music Player UI and Class
 
-# todo: build clean UI
-
 import pygame
 import pygame_widgets
 from pygame_widgets.slider import Slider
