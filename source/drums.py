@@ -52,7 +52,7 @@ class Drums:
             pygame.mixer.Channel(idx).play(pygame.mixer.Sound(self.sounds[idx]))
             return idx
         except:
-            pass
+            return None
 
     # Returns drum location given idx
     def drumHitPos(self, idx):
@@ -69,16 +69,20 @@ class Drums:
                               ('md_tom', 4), ('fl_tom', 5), ('ride', 6), ('crash', 7)]
         for drums in drumList:
             for names in drum_names_and_idx:
-                if names[0] in drums:
+                if names[0] in str(drums):
                     organized_drum_list[names[1]] = drums
         return organized_drum_list
 
     # Used to load different sounds into the drum kit
     def loadDrums(self, drumList):
         if len(drumList) == len(self.sounds):
-            self.sounds = self.organizeDrums(drumList)
+            newDrumList = self.organizeDrums(drumList)
+            if None in newDrumList:
+                return None
+            else:
+                self.sounds = self.organizeDrums(drumList)
         else:
-            quit
+            return None
     
     def drawVolumeSlider(self):
         sliderLabel = TextBox(self.display, 100, 845, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
