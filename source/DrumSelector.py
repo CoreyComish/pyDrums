@@ -2,22 +2,18 @@
 # Handles user selecting different drum kits and UI
 
 import pygame
+import pygame_widgets
+from pygame_widgets.button import Button
 import tkinter
 from tkinter import filedialog
 import os
 
 class DrumSelector:
 
-    def __init__(self, display, rect, color):
+    def __init__(self, display, drums):
         self.display = display
-        self.drum_select_rect = rect
-        self.color = color
         self.folder_path = None
-
-        self.font = pygame.font.SysFont('Arial', 15)
-
-    def getDrumSelectorRect(self):
-        return self.drum_select_rect
+        self.drums = drums
 
     def getDrumFolderPath(self):
         self.folder_path = filedialog.askdirectory()
@@ -31,14 +27,10 @@ class DrumSelector:
                 file = os.path.join(folder_path, filename)
                 new_drum_list.append(file)
         if len(new_drum_list) == 8:
-            return new_drum_list
+            self.drums.loadDrums(new_drum_list)
         else:
             return None
-    
-    def drawDrumSelector(self, display):
-        pygame.draw.rect(self.display, self.color, self.drum_select_rect)
-        display.blit(self.font.render("Click to load another drum set", True, (255,0,0)), 
-                (self.drum_select_rect.left + 5, self.drum_select_rect.top + 2))
 
-    def drawDrumSelectorUI(self, display):
-        self.drawDrumSelector(display)
+    def drawDrumSelectorUI(self):
+        drum_select_button = Button(self.display, 725, 850, 250, 20, hoverColor=(150,0,0), radius=6, 
+                                  text="Change drum kits", onClick=lambda: self.getDrums())

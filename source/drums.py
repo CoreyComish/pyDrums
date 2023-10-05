@@ -80,11 +80,11 @@ class Drums:
         else:
             quit
     
-    def drawVolumeSlider(self, display):
-        sliderLabel = TextBox(display, 100, 845, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
+    def drawVolumeSlider(self):
+        sliderLabel = TextBox(self.display, 100, 845, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
         sliderLabel.setText("Drum Volume")
         sliderLabel.disable()
-        slider = Slider(display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
+        slider = Slider(self.display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
         self.slider = slider
     
     def updateVolume(self):
