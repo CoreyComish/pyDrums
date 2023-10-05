@@ -1,8 +1,8 @@
 from Drums import Drums
 import pygame
+import pytest
 
 screen = 1 # dummy screen
-drums = Drums(screen)
 
 correct_drum_list = ["./audio/Standard/hi_hat.wav", 
                 "./audio/Standard/kick.wav", 
@@ -31,7 +31,11 @@ duplicate_drum_list = ["./audio/Standard/hi_hat.wav",
                 "./audio/Standard/ride.wav", 
                 "./audio/Standard/crash.wav"]
 
-def test_load_drums():
+@pytest.fixture
+def drums():
+    return Drums(screen)
+
+def test_load_drums(drums):
     drums.loadDrums(['hi_hat.wav']) == None # only one drum
     drums.loadDrums(['hi_hat.wav' * 7]) == None # one to few drums
     drums.loadDrums(['hi_hat.wav' * 9]) == None # one to many drums
@@ -39,6 +43,6 @@ def test_load_drums():
     drums.loadDrums(duplicate_drum_list) == None # duplicate drum in drum list
     drums.loadDrums(correct_drum_list) == correct_drum_list # valid test
 
-def test_play_drum():
+def test_play_drum(drums):
     drums.playDrum(pygame.K_m) == None # invalid key
     drums.playDrum(pygame.K_h) != None # valid key
