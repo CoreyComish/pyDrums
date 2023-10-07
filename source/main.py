@@ -1,6 +1,5 @@
 import pygame
 import pygame_widgets
-import os
 import Drums
 import MusicPlayer
 import DrumSelector
@@ -29,6 +28,7 @@ drum_selector.drawDrumSelectorUI()
 # Position of last drum hit
 drum_hit_pos = []
 
+# Main Game Loop
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

@@ -12,6 +12,7 @@ pygame.mixer.set_num_channels(CHANNEL_COUNT)
 
 audioDirectory = utils.getProjectRoot() + "/audio/Standard/"
 
+# default drums loaded on start
 defaultDrums = [pygame.mixer.Sound(audioDirectory + "hi_hat.wav"), 
                 pygame.mixer.Sound(audioDirectory + "kick.wav"), 
                 pygame.mixer.Sound(audioDirectory + "snare.wav"), 
@@ -21,10 +22,12 @@ defaultDrums = [pygame.mixer.Sound(audioDirectory + "hi_hat.wav"),
                 pygame.mixer.Sound(audioDirectory + "ride.wav"), 
                 pygame.mixer.Sound(audioDirectory + "crash.wav")]
 
+# default hotkeys loaded on start
 defaultKeys = [pygame.K_h, pygame.K_SPACE, pygame.K_s, 
                pygame.K_q, pygame.K_w, pygame.K_e,
                pygame.K_y, pygame.K_u]
 
+# drum locations for the light up on hit
 drumLoc = [(100, 250), (475,500), (350,400), (410,275),
            (525,275), (650,400), (725,225), (325,125)]
 
@@ -91,8 +94,7 @@ class Drums:
         sliderLabel = TextBox(self.display, 100, 845, 20, 20, colour=(255,255,255), borderColour=(255,255,255))
         sliderLabel.setText("Drum Volume")
         sliderLabel.disable()
-        slider = Slider(self.display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
-        self.slider = slider
+        self.slider = Slider(self.display, 50, 860, 200, 10, min=0.0, max=1.0, step=0.05)
 
     def drawDrumUI(self):
         self.drawVolumeSlider()
